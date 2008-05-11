@@ -19,10 +19,10 @@ import com.idega.presentation.text.LinkContainer;
 import com.idega.presentation.text.Text;
 
 /**
- * Last modified: $Date: 2008/05/11 16:17:17 $ by $Author: laddi $
+ * Last modified: $Date: 2008/05/11 16:39:46 $ by $Author: laddi $
  * 
  * @author <a href="mailto:laddi@idega.com">laddi</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class BasketLink extends Block {
 
@@ -54,7 +54,7 @@ public class BasketLink extends Block {
 			span = new Span();
 			span.setStyleClass("basketLinkItems");
 			if (!getBasketBusiness(iwc).isBasketEmpty()) {
-				span.add(new Text(MessageFormat.format(getResourceBundle(iwc).getLocalizedString("basket.items_in_basket", "{0} items in basket"), arguments)));
+				span.add(new Text(MessageFormat.format(getResourceBundle(iwc).getLocalizedString("basket.items_in_basket", "{0} item/s in basket"), arguments)));
 			}
 			else {
 				span.add(new Text(getResourceBundle(iwc).getLocalizedString("basket.empty_basket", "Basket is empty")));
