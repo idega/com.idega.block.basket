@@ -19,10 +19,10 @@ import com.idega.presentation.text.LinkContainer;
 import com.idega.presentation.text.Text;
 
 /**
- * Last modified: $Date: 2008/05/11 14:13:53 $ by $Author: laddi $
+ * Last modified: $Date: 2008/05/11 14:26:17 $ by $Author: laddi $
  * 
  * @author <a href="mailto:laddi@idega.com">laddi</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class BasketLink extends Block {
 
@@ -35,12 +35,13 @@ public class BasketLink extends Block {
 	 */
 	@Override
 	public void main(IWContext iwc) throws Exception {
-		if (!getBasketBusiness(iwc).isBasketEmpty() && getPage() != null) {
+		if (getPage() != null) {
 			Layer layer = new Layer();
 			layer.add("basketLink");
 			add(layer);
 			
 			LinkContainer link = new LinkContainer();
+			link.setPage(getPage());
 			layer.add(link);
 			
 			Span span = new Span();
@@ -52,7 +53,12 @@ public class BasketLink extends Block {
 			
 			span = new Span();
 			span.setStyleClass("basketLinkItems");
-			span.add(new Text(MessageFormat.format(getResourceBundle(iwc).getLocalizedString("basket.items_in_basket", "{0} items in basket"), arguments)));
+			if (!getBasketBusiness(iwc).isBasketEmpty()) {
+				span.add(new Text(MessageFormat.format(getResourceBundle(iwc).getLocalizedString("basket.items_in_basket", "{0} items in basket"), arguments)));
+			}
+			else {
+				span.add(new Text(getResourceBundle(iwc).getLocalizedString("basket.empty_basket", "Basket is empty")));
+			}
 			link.add(span);
 		}
 	}
