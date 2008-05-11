@@ -46,6 +46,15 @@ public class BasketBusinessBean extends IBOSessionBean
 	public void addItem(BasketItem item) {
 		addItem(item, 1);
 	}
+	
+	/** 
+	 * Returns whether basket is empty or not
+	 * 
+	 * @return boolean
+	 */
+	public boolean isBasketEmpty() {
+		return basket == null || basket.isEmpty();
+	}
 
 	/**
 	 * Increments the quantity of the specified item in the basket by the
