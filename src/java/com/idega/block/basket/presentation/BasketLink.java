@@ -19,10 +19,10 @@ import com.idega.presentation.text.LinkContainer;
 import com.idega.presentation.text.Text;
 
 /**
- * Last modified: $Date: 2008/05/11 14:26:17 $ by $Author: laddi $
+ * Last modified: $Date: 2008/05/11 16:17:17 $ by $Author: laddi $
  * 
  * @author <a href="mailto:laddi@idega.com">laddi</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class BasketLink extends Block {
 
@@ -37,7 +37,7 @@ public class BasketLink extends Block {
 	public void main(IWContext iwc) throws Exception {
 		if (getPage() != null) {
 			Layer layer = new Layer();
-			layer.add("basketLink");
+			layer.setStyleClass("basketLink");
 			add(layer);
 			
 			LinkContainer link = new LinkContainer();
