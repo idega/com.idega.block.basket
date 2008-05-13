@@ -19,14 +19,15 @@ import com.idega.presentation.text.LinkContainer;
 import com.idega.presentation.text.Text;
 
 /**
- * Last modified: $Date: 2008/05/12 21:28:31 $ by $Author: gimmi $
+ * Last modified: $Date: 2008/05/13 22:57:14 $ by $Author: gimmi $
  * 
  * @author <a href="mailto:laddi@idega.com">laddi</a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class BasketLink extends Block {
 
 	private ICPage page;
+	private String url;
 	
 	/*
 	 * (non-Javadoc)
@@ -40,7 +41,11 @@ public class BasketLink extends Block {
 			add(layer);
 			
 			LinkContainer link = new LinkContainer();
-			link.setPage(getPage());
+			if (getPage() != null) {
+				link.setPage(getPage());
+			} else if (getUrl() != null) {
+				link.setURL(url);
+			}
 			layer.add(link);
 			
 			Span span = new Span();
@@ -84,4 +89,13 @@ public class BasketLink extends Block {
 	public void setPage(ICPage page) {
 		this.page = page;
 	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	
 }
